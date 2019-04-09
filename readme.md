@@ -1,4 +1,6 @@
-# JSS integration with React
+This is fork of react-jss, and add a **custom-setup** more naturally for beginner. If you find a problem, you may want to find this fork probably :)
+
+# JSS integration with React 
 
 [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/cssinjs/lobby)
 [![Build Status](https://travis-ci.org/cssinjs/react-jss.svg?branch=master)](https://travis-ci.org/cssinjs/react-jss)
