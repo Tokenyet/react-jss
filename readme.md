@@ -396,6 +396,8 @@ const StyledComponent = injectSheet({})(InnerComponent)
 
 If you want to specify a JSS version and plugins to use, you should create your [own JSS instance](https://github.com/cssinjs/jss/blob/master/docs/js-api.md#create-an-own-jss-instance), [setup plugins](https://github.com/cssinjs/jss/blob/master/docs/setup.md#setup-with-plugins) and pass it to `JssProvider`.
 
+**Notice: This is the origin post from react-jss, but I stuck on this a Full Day. So I decide to fork this readme for someone who stucked as me. If you are stucked by this, see below(or more below)**
+
 ```javascript
 import {create as createJss} from 'jss'
 import {JssProvider} from 'react-jss'
@@ -416,6 +418,23 @@ You can also access the JSS instance being used by default.
 ```javascript
 import {jss} from 'react-jss'
 ```
+
+### Custom setup for real beginner
+You probably stuck on some strange issue, when you use custom setup. In my case, I losing some parsing sugar, that caused me to use single quote('), on every style definition. If you haven't figured out what's going on. Let's see the below solution.
+
+```javascript
+import {JssProvider, jss} from 'react-jss'
+import jssNested from 'jss-plugin-nested';
+//const jss = createJss(); // Fuck!
+jss.use(jssNested()); // And also, Change from jssNested to jssNested() save my ass, fuck!
+
+ReactDOM.render(
+<JssProvider jss={jss}>
+    <App />
+</JssProvider>, document.getElementById('root'));
+```
+Two possible error from beginner as me would make the mistake, One for using PURE jss, and losing full feature by default. The another is forgetting to use () to use plugin.
+
 
 ### Multi-tree setup
 
